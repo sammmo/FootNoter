@@ -18,11 +18,13 @@
 		26E21F6F238D6C810098D842 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 26E21F6D238D6C810098D842 /* LaunchScreen.storyboard */; };
 		26E21F7A238D6C810098D842 /* FootNoterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E21F79238D6C810098D842 /* FootNoterTests.swift */; };
 		26E21F85238D6C810098D842 /* FootNoterUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E21F84238D6C810098D842 /* FootNoterUITests.swift */; };
-		26E21F9323B010400098D842 /* SetupVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E21F9223B010400098D842 /* SetupVC.swift */; };
-		26E21F9523B016FF0098D842 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E21F9423B016FF0098D842 /* Settings.swift */; };
+		26E21F9323B010400098D842 /* SettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E21F9223B010400098D842 /* SettingsVC.swift */; };
 		26E21F9723B023860098D842 /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E21F9623B023860098D842 /* MainVC.swift */; };
 		26E21F9923B027240098D842 /* MetaWearSensor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E21F9823B027240098D842 /* MetaWearSensor.swift */; };
-		C100C389C7E5B48BCF4305CE /* Pods_FootNoter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8C20769C8C89C3ED38DCE5C /* Pods_FootNoter.framework */; };
+		31AA084523D102B800F60942 /* AppDelegate+UserVars.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31AA084423D102B800F60942 /* AppDelegate+UserVars.swift */; };
+		552CEA67F6111691FB226C51 /* Pods_FootNoter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F625F5837C35E3C6D1C3E542 /* Pods_FootNoter.framework */; };
+		6CD1D071EEBC11470400688F /* Pods_FootNoterTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6F03756446636A3A245B215 /* Pods_FootNoterTests.framework */; };
+		E9856D7A2E1F3C19FFCB0925 /* Pods_FootNoter_FootNoterUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85ED6B13E9ABB1906964A6CE /* Pods_FootNoter_FootNoterUITests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,7 +45,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		1433965C5833438D7338E991 /* Pods-FootNoter.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FootNoter.release.xcconfig"; path = "Pods/Target Support Files/Pods-FootNoter/Pods-FootNoter.release.xcconfig"; sourceTree = "<group>"; };
+		1F02F2E49778AE792CAD5514 /* Pods-FootNoter-FootNoterUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FootNoter-FootNoterUITests.release.xcconfig"; path = "Target Support Files/Pods-FootNoter-FootNoterUITests/Pods-FootNoter-FootNoterUITests.release.xcconfig"; sourceTree = "<group>"; };
 		268D135823B02B69009C8985 /* MetaWear.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = MetaWear.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		268D135A23B02B72009C8985 /* BoltsSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = BoltsSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		268D135C23B02B76009C8985 /* iOSDFULibrary.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = iOSDFULibrary.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -61,12 +63,18 @@
 		26E21F80238D6C810098D842 /* FootNoterUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FootNoterUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		26E21F84238D6C810098D842 /* FootNoterUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FootNoterUITests.swift; sourceTree = "<group>"; };
 		26E21F86238D6C810098D842 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		26E21F9223B010400098D842 /* SetupVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupVC.swift; sourceTree = "<group>"; };
-		26E21F9423B016FF0098D842 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
+		26E21F9223B010400098D842 /* SettingsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsVC.swift; sourceTree = "<group>"; };
 		26E21F9623B023860098D842 /* MainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
 		26E21F9823B027240098D842 /* MetaWearSensor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetaWearSensor.swift; sourceTree = "<group>"; };
-		5B1A88A3216A2AE437008A03 /* Pods-FootNoter.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FootNoter.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FootNoter/Pods-FootNoter.debug.xcconfig"; sourceTree = "<group>"; };
-		D8C20769C8C89C3ED38DCE5C /* Pods_FootNoter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FootNoter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		31AA084423D102B800F60942 /* AppDelegate+UserVars.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppDelegate+UserVars.swift"; sourceTree = "<group>"; };
+		3CCD32540D9803C21CBCAB2B /* Pods-FootNoterTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FootNoterTests.release.xcconfig"; path = "Target Support Files/Pods-FootNoterTests/Pods-FootNoterTests.release.xcconfig"; sourceTree = "<group>"; };
+		4EA9EAA03712BFEE78FF0959 /* Pods-FootNoter.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FootNoter.debug.xcconfig"; path = "Target Support Files/Pods-FootNoter/Pods-FootNoter.debug.xcconfig"; sourceTree = "<group>"; };
+		85ED6B13E9ABB1906964A6CE /* Pods_FootNoter_FootNoterUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FootNoter_FootNoterUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		99775C19F75D279CEACCFEA2 /* Pods-FootNoter.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FootNoter.release.xcconfig"; path = "Target Support Files/Pods-FootNoter/Pods-FootNoter.release.xcconfig"; sourceTree = "<group>"; };
+		BCBDF20E891F524CC2931735 /* Pods-FootNoterTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FootNoterTests.debug.xcconfig"; path = "Target Support Files/Pods-FootNoterTests/Pods-FootNoterTests.debug.xcconfig"; sourceTree = "<group>"; };
+		E1B926200926C5C338485C5A /* Pods-FootNoter-FootNoterUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FootNoter-FootNoterUITests.debug.xcconfig"; path = "Target Support Files/Pods-FootNoter-FootNoterUITests/Pods-FootNoter-FootNoterUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		F625F5837C35E3C6D1C3E542 /* Pods_FootNoter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FootNoter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F6F03756446636A3A245B215 /* Pods_FootNoterTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FootNoterTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,7 +85,7 @@
 				268D135D23B02B76009C8985 /* iOSDFULibrary.framework in Frameworks */,
 				268D135B23B02B72009C8985 /* BoltsSwift.framework in Frameworks */,
 				268D135923B02B69009C8985 /* MetaWear.framework in Frameworks */,
-				C100C389C7E5B48BCF4305CE /* Pods_FootNoter.framework in Frameworks */,
+				552CEA67F6111691FB226C51 /* Pods_FootNoter.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -85,6 +93,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6CD1D071EEBC11470400688F /* Pods_FootNoterTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -92,12 +101,26 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E9856D7A2E1F3C19FFCB0925 /* Pods_FootNoter_FootNoterUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		01423B8B1D6ABB748C1D8000 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				4EA9EAA03712BFEE78FF0959 /* Pods-FootNoter.debug.xcconfig */,
+				99775C19F75D279CEACCFEA2 /* Pods-FootNoter.release.xcconfig */,
+				E1B926200926C5C338485C5A /* Pods-FootNoter-FootNoterUITests.debug.xcconfig */,
+				1F02F2E49778AE792CAD5514 /* Pods-FootNoter-FootNoterUITests.release.xcconfig */,
+				BCBDF20E891F524CC2931735 /* Pods-FootNoterTests.debug.xcconfig */,
+				3CCD32540D9803C21CBCAB2B /* Pods-FootNoterTests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		26E21F55238D6C7D0098D842 = {
 			isa = PBXGroup;
 			children = (
@@ -105,8 +128,8 @@
 				26E21F78238D6C810098D842 /* FootNoterTests */,
 				26E21F83238D6C810098D842 /* FootNoterUITests */,
 				26E21F5F238D6C7D0098D842 /* Products */,
-				3733583A20D579F167FC7409 /* Pods */,
 				6C738E70E3E13B9C272EE619 /* Frameworks */,
+				01423B8B1D6ABB748C1D8000 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -124,8 +147,8 @@
 			isa = PBXGroup;
 			children = (
 				26E21F61238D6C7D0098D842 /* AppDelegate.swift */,
-				26E21F9223B010400098D842 /* SetupVC.swift */,
-				26E21F9423B016FF0098D842 /* Settings.swift */,
+				31AA084423D102B800F60942 /* AppDelegate+UserVars.swift */,
+				26E21F9223B010400098D842 /* SettingsVC.swift */,
 				26E21F9623B023860098D842 /* MainVC.swift */,
 				26E21F9823B027240098D842 /* MetaWearSensor.swift */,
 				268D135E23B03838009C8985 /* MetaWearManager.swift */,
@@ -156,22 +179,15 @@
 			path = FootNoterUITests;
 			sourceTree = "<group>";
 		};
-		3733583A20D579F167FC7409 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				5B1A88A3216A2AE437008A03 /* Pods-FootNoter.debug.xcconfig */,
-				1433965C5833438D7338E991 /* Pods-FootNoter.release.xcconfig */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
 		6C738E70E3E13B9C272EE619 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
 				268D135C23B02B76009C8985 /* iOSDFULibrary.framework */,
 				268D135A23B02B72009C8985 /* BoltsSwift.framework */,
 				268D135823B02B69009C8985 /* MetaWear.framework */,
-				D8C20769C8C89C3ED38DCE5C /* Pods_FootNoter.framework */,
+				F625F5837C35E3C6D1C3E542 /* Pods_FootNoter.framework */,
+				85ED6B13E9ABB1906964A6CE /* Pods_FootNoter_FootNoterUITests.framework */,
+				F6F03756446636A3A245B215 /* Pods_FootNoterTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -183,11 +199,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 26E21F89238D6C810098D842 /* Build configuration list for PBXNativeTarget "FootNoter" */;
 			buildPhases = (
-				BBBD40BD138C6EBBADC0CA3C /* [CP] Check Pods Manifest.lock */,
+				9D326F768F019B8D926AF75F /* [CP] Check Pods Manifest.lock */,
 				26E21F5A238D6C7D0098D842 /* Sources */,
 				26E21F5B238D6C7D0098D842 /* Frameworks */,
 				26E21F5C238D6C7D0098D842 /* Resources */,
-				A7B7649957136686B485EB28 /* [CP] Embed Pods Frameworks */,
+				F7750AA382174F52B2C9F537 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -202,6 +218,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 26E21F8C238D6C810098D842 /* Build configuration list for PBXNativeTarget "FootNoterTests" */;
 			buildPhases = (
+				2624FAB676119B439811C4B9 /* [CP] Check Pods Manifest.lock */,
 				26E21F71238D6C810098D842 /* Sources */,
 				26E21F72238D6C810098D842 /* Frameworks */,
 				26E21F73238D6C810098D842 /* Resources */,
@@ -220,9 +237,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 26E21F8F238D6C810098D842 /* Build configuration list for PBXNativeTarget "FootNoterUITests" */;
 			buildPhases = (
+				C45CA13D038D0FC583DB3B76 /* [CP] Check Pods Manifest.lock */,
 				26E21F7C238D6C810098D842 /* Sources */,
 				26E21F7D238D6C810098D842 /* Frameworks */,
 				26E21F7E238D6C810098D842 /* Resources */,
+				305781F81D41A068F862CC08 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -310,7 +329,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		A7B7649957136686B485EB28 /* [CP] Embed Pods Frameworks */ = {
+		2624FAB676119B439811C4B9 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -318,23 +337,38 @@
 			inputFileListPaths = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-FootNoter/Pods-FootNoter-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/Bolts-Swift/BoltsSwift.framework",
-				"${BUILT_PRODUCTS_DIR}/MetaWear/MetaWear.framework",
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
-			name = "[CP] Embed Pods Frameworks";
+			name = "[CP] Check Pods Manifest.lock";
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BoltsSwift.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MetaWear.framework",
+				"$(DERIVED_FILE_DIR)/Pods-FootNoterTests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FootNoter/Pods-FootNoter-frameworks.sh\"\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		BBBD40BD138C6EBBADC0CA3C /* [CP] Check Pods Manifest.lock */ = {
+		305781F81D41A068F862CC08 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-FootNoter-FootNoterUITests/Pods-FootNoter-FootNoterUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-FootNoter-FootNoterUITests/Pods-FootNoter-FootNoterUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-FootNoter-FootNoterUITests/Pods-FootNoter-FootNoterUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9D326F768F019B8D926AF75F /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -356,6 +390,45 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		C45CA13D038D0FC583DB3B76 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-FootNoter-FootNoterUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F7750AA382174F52B2C9F537 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-FootNoter/Pods-FootNoter-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-FootNoter/Pods-FootNoter-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-FootNoter/Pods-FootNoter-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -363,13 +436,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				31AA084523D102B800F60942 /* AppDelegate+UserVars.swift in Sources */,
 				26E21F6A238D6C7D0098D842 /* FootNoter.xcdatamodeld in Sources */,
 				268D135F23B03838009C8985 /* MetaWearManager.swift in Sources */,
 				26E21F9723B023860098D842 /* MainVC.swift in Sources */,
-				26E21F9323B010400098D842 /* SetupVC.swift in Sources */,
+				26E21F9323B010400098D842 /* SettingsVC.swift in Sources */,
 				26E21F62238D6C7D0098D842 /* AppDelegate.swift in Sources */,
 				26E21F9923B027240098D842 /* MetaWearSensor.swift in Sources */,
-				26E21F9523B016FF0098D842 /* Settings.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -461,6 +534,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)";
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -475,10 +549,21 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_CFLAGS = (
+					"$(inherited)",
+					"-iquote",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/Bolts-Swift/BoltsSwift.framework/Headers\"",
+					"-iquote",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/MetaWear/MetaWear.framework/Headers\"",
+					"-iquote",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/Zip/Zip.framework/Headers\"",
+					"-iquote",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/iOSDFULibrary/iOSDFULibrary.framework/Headers\"",
+				);
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -522,6 +607,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)";
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -530,9 +616,20 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
+				OTHER_CFLAGS = (
+					"$(inherited)",
+					"-iquote",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/Bolts-Swift/BoltsSwift.framework/Headers\"",
+					"-iquote",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/MetaWear/MetaWear.framework/Headers\"",
+					"-iquote",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/Zip/Zip.framework/Headers\"",
+					"-iquote",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/iOSDFULibrary/iOSDFULibrary.framework/Headers\"",
+				);
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
@@ -542,15 +639,35 @@
 		};
 		26E21F8A238D6C810098D842 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5B1A88A3216A2AE437008A03 /* Pods-FootNoter.debug.xcconfig */;
+			baseConfigurationReference = 4EA9EAA03712BFEE78FF0959 /* Pods-FootNoter.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 4Y4U5QDL2A;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/Bolts-Swift\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/MetaWear\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/ZIPFoundation\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/iOSDFULibrary\"",
+				);
 				INFOPLIST_FILE = FootNoter/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
+				);
+				OTHER_CFLAGS = "";
+				"OTHER_CFLAGS[sdk=*]" = (
+					"$(inherited)",
+					"-iquote",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/Bolts-Swift/BoltsSwift.framework/Headers\"",
+					"-iquote",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/MetaWear/MetaWear.framework/Headers\"",
+					"-iquote",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/Zip/Zip.framework/Headers\"",
+					"-iquote",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/iOSDFULibrary/iOSDFULibrary.framework/Headers\"",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.sammmo.FootNoter;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -561,15 +678,34 @@
 		};
 		26E21F8B238D6C810098D842 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1433965C5833438D7338E991 /* Pods-FootNoter.release.xcconfig */;
+			baseConfigurationReference = 99775C19F75D279CEACCFEA2 /* Pods-FootNoter.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 4Y4U5QDL2A;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/Bolts-Swift\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/MetaWear\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/ZIPFoundation\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/iOSDFULibrary\"",
+				);
 				INFOPLIST_FILE = FootNoter/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
+				);
+				"OTHER_CFLAGS[arch=*]" = (
+					"$(inherited)",
+					"-iquote",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/Bolts-Swift/BoltsSwift.framework/Headers\"",
+					"-iquote",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/MetaWear/MetaWear.framework/Headers\"",
+					"-iquote",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/Zip/Zip.framework/Headers\"",
+					"-iquote",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/iOSDFULibrary/iOSDFULibrary.framework/Headers\"",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.sammmo.FootNoter;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -580,6 +716,7 @@
 		};
 		26E21F8D238D6C810098D842 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BCBDF20E891F524CC2931735 /* Pods-FootNoterTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -601,6 +738,7 @@
 		};
 		26E21F8E238D6C810098D842 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3CCD32540D9803C21CBCAB2B /* Pods-FootNoterTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -622,6 +760,7 @@
 		};
 		26E21F90238D6C810098D842 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E1B926200926C5C338485C5A /* Pods-FootNoter-FootNoterUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -642,6 +781,7 @@
 		};
 		26E21F91238D6C810098D842 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1F02F2E49778AE792CAD5514 /* Pods-FootNoter-FootNoterUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -670,7 +810,7 @@
 				26E21F88238D6C810098D842 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		26E21F89238D6C810098D842 /* Build configuration list for PBXNativeTarget "FootNoter" */ = {
 			isa = XCConfigurationList;
@@ -679,7 +819,7 @@
 				26E21F8B238D6C810098D842 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		26E21F8C238D6C810098D842 /* Build configuration list for PBXNativeTarget "FootNoterTests" */ = {
 			isa = XCConfigurationList;
@@ -688,7 +828,7 @@
 				26E21F8E238D6C810098D842 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		26E21F8F238D6C810098D842 /* Build configuration list for PBXNativeTarget "FootNoterUITests" */ = {
 			isa = XCConfigurationList;
@@ -697,7 +837,7 @@
 				26E21F91238D6C810098D842 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 /* End XCConfigurationList section */
 

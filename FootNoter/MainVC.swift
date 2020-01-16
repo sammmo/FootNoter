@@ -9,14 +9,14 @@ import Foundation
 import UIKit
 
 class MainVC: UIViewController, MetaWearManagerDelegate {
-    
-    var settings: Settings?
-    var metaWearManager: MetaWearManager?
+
+    var metaWearManager: MetaWearManager!
     
     //MARK: - UI Outlet Variables
     @IBOutlet weak var lblSensorStatus: UILabel!
     @IBOutlet weak var lblMacAddress: UILabel!
     @IBOutlet weak var lblBattery: UILabel!
+    @IBOutlet weak var lblStepCount: UILabel!
     
     //MARK: - UI Overrides
     
@@ -24,16 +24,32 @@ class MainVC: UIViewController, MetaWearManagerDelegate {
         
         metaWearManager = MetaWearManager()
         metaWearManager.delegate = self
-        
-        //TODO: load settings from CoreData
     }
     
     //MARK: - Delegate protocol implementation
     /**
      Called by manager delegate to notify view controller that a sensor has been connected
     **/
-    func connected() {
-        lblSensorStatus.setText("You are connected!")
+    func update(mac: String, battery: String, connection: ConnectionStatus) {
+        
+        DispatchQueue.main.async {
+            self.lblMacAddress.text = mac
+            
+            switch connection {
+            case .connected:
+                self.lblSensorStatus.text = "You are connected!"
+                break
+            case .disconnected:
+                self.lblSensorStatus.text = "You are disconnected!"
+                break
+            }
+        }
+       }
+    
+    func updateSteps(count: Int) {
+        DispatchQueue.main.async {
+            self.lblStepCount.text = "\(count)"
+        }
     }
     
     //MARK: - Functions called directly by UI components
