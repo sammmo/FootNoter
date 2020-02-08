@@ -21,6 +21,8 @@
 		26E21F9723B023860098D842 /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E21F9623B023860098D842 /* MainVC.swift */; };
 		26E21F9923B027240098D842 /* MetaWearSensor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E21F9823B027240098D842 /* MetaWearSensor.swift */; };
 		3109CEBC23EF3674000F6850 /* BoltsSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 268D135A23B02B72009C8985 /* BoltsSwift.framework */; };
+		3109CEC023EF3B9F000F6850 /* TiltCalculation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3109CEBF23EF3B9F000F6850 /* TiltCalculation.swift */; };
+		3109CEC223EF3F91000F6850 /* CalibrationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3109CEC123EF3F91000F6850 /* CalibrationManager.swift */; };
 		31AA084523D102B800F60942 /* AppDelegate+UserVars.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31AA084423D102B800F60942 /* AppDelegate+UserVars.swift */; };
 		552CEA67F6111691FB226C51 /* Pods_FootNoter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F625F5837C35E3C6D1C3E542 /* Pods_FootNoter.framework */; };
 		6CD1D071EEBC11470400688F /* Pods_FootNoterTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6F03756446636A3A245B215 /* Pods_FootNoterTests.framework */; };
@@ -66,6 +68,8 @@
 		26E21F9223B010400098D842 /* SettingsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsVC.swift; sourceTree = "<group>"; };
 		26E21F9623B023860098D842 /* MainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
 		26E21F9823B027240098D842 /* MetaWearSensor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetaWearSensor.swift; sourceTree = "<group>"; };
+		3109CEBF23EF3B9F000F6850 /* TiltCalculation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TiltCalculation.swift; sourceTree = "<group>"; };
+		3109CEC123EF3F91000F6850 /* CalibrationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalibrationManager.swift; sourceTree = "<group>"; };
 		31AA084423D102B800F60942 /* AppDelegate+UserVars.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppDelegate+UserVars.swift"; sourceTree = "<group>"; };
 		3CCD32540D9803C21CBCAB2B /* Pods-FootNoterTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FootNoterTests.release.xcconfig"; path = "Target Support Files/Pods-FootNoterTests/Pods-FootNoterTests.release.xcconfig"; sourceTree = "<group>"; };
 		4EA9EAA03712BFEE78FF0959 /* Pods-FootNoter.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FootNoter.debug.xcconfig"; path = "Target Support Files/Pods-FootNoter/Pods-FootNoter.debug.xcconfig"; sourceTree = "<group>"; };
@@ -152,6 +156,8 @@
 				26E21F9623B023860098D842 /* MainVC.swift */,
 				26E21F9823B027240098D842 /* MetaWearSensor.swift */,
 				268D135E23B03838009C8985 /* MetaWearManager.swift */,
+				3109CEBF23EF3B9F000F6850 /* TiltCalculation.swift */,
+				3109CEC123EF3F91000F6850 /* CalibrationManager.swift */,
 				26E21F65238D6C7D0098D842 /* Main.storyboard */,
 				26E21F6B238D6C810098D842 /* Assets.xcassets */,
 				26E21F6D238D6C810098D842 /* LaunchScreen.storyboard */,
@@ -437,11 +443,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				31AA084523D102B800F60942 /* AppDelegate+UserVars.swift in Sources */,
+				3109CEC223EF3F91000F6850 /* CalibrationManager.swift in Sources */,
 				26E21F6A238D6C7D0098D842 /* FootNoter.xcdatamodeld in Sources */,
 				268D135F23B03838009C8985 /* MetaWearManager.swift in Sources */,
 				26E21F9723B023860098D842 /* MainVC.swift in Sources */,
 				26E21F9323B010400098D842 /* SettingsVC.swift in Sources */,
 				26E21F62238D6C7D0098D842 /* AppDelegate.swift in Sources */,
+				3109CEC023EF3B9F000F6850 /* TiltCalculation.swift in Sources */,
 				26E21F9923B027240098D842 /* MetaWearSensor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

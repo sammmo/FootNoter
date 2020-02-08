@@ -18,13 +18,11 @@ enum ScanningStatus {
     case scanning, standby
 }
 
-
-
 class MetaWearManager: MetaWearSensorDelegate {
-
     
     var mwSensor: MetaWearSensor?
     var delegate: MetaWearManagerDelegate?
+    var readingDelegate: ReadingDelegate?
     var stepCount: Int = 0
     private var connectionStatus: ConnectionStatus!
     private var scanningStatus: ScanningStatus!
@@ -56,7 +54,7 @@ class MetaWearManager: MetaWearSensorDelegate {
     
     func mwScannerStart(completion: @escaping () -> Void) {
         
-        /*
+        /**
          MetaWearScanner is a dependency class (cocopods).
          It is an adoption of CoreBlueTooth for use with MetaWear sensors.
          For more information: https://mbientlab.com/iosdocs/latest/metawearscanner.html
@@ -101,6 +99,32 @@ class MetaWearManager: MetaWearSensorDelegate {
         MetaWearScanner.shared.stopScan()
     }
     
+    func checkSensor() -> SensorStatus {
+        if let sensor = mwSensor {
+            return sensor.checkStatus()
+        } else {
+            return .disconnected
+        }
+    }
+    
+    //MARK: Stop / Start functions
+    
+    func startSensor() {
+        if let sensor = mwSensor {
+            if sensor.checkStatus() == .ready {
+                sensor.start()
+            }
+        }
+    }
+    
+    func stopSensor() {
+        if let sensor = mwSensor {
+            if sensor.checkStatus() == .ready {
+                sensor.stop()
+            }
+        }
+    }
+    
     //MARK: - Delegate Protocol Functions
     
     func notifyDisconnect() {
@@ -119,7 +143,7 @@ class MetaWearManager: MetaWearSensorDelegate {
         }
     }
     
-    func orientationDeteced() {
+    func orientationDetected() {
         if let sensor = mwSensor {
             if let orient = sensor.orientation {
                 if let facing = sensor.facing {
@@ -131,10 +155,24 @@ class MetaWearManager: MetaWearSensorDelegate {
         }
     }
     
+    /**
+     Since the idea of this "Manager" is to abstract the sensor from the rest of the code, when the sensor takes an accelerometer reading, manager passes it along to whatever has declared itself the readings reciever (delegate)
+     */
+    
+    func pushReading(x: Double, y: Double, z: Double) {
+        if let del = readingDelegate {
+            del.getReading(x: x, y: y, z: z)
+        }
+    }
+    
 }
 
 protocol MetaWearManagerDelegate {
     func update(mac: String, battery: String, connection: ConnectionStatus)
     func updateSteps(count: Int)
     func updateOrientation(facing: SensorFacing, orientation: SensorOrientation)
+}
+
+protocol ReadingDelegate {
+    func getReading(x: Double, y: Double, z: Double)
 }

@@ -75,5 +75,14 @@ class MainVC: UIViewController, MetaWearManagerDelegate {
     
     @IBAction func calibratePressed(_ sender: Any) {
         //TODO: implement calibration
+        //Display instructions
+        //get 5 seconds of reading
+        //average out the x,y,z
+        //persist Calibration struct
+        let manager = CalibrationManager(manager: metaWearManager)
+        manager.run { (calibration) in
+            //save calibration to coredata
+            print(calibration)
+        }
     }
 }

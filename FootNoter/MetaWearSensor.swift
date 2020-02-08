@@ -9,20 +9,16 @@ import Foundation
 import MetaWear
 import MetaWearCpp
 
-/**
- MetaWear library provides code to detect if the sensor is vertical or horizontal.
- When the x axis is pointed up, the sensor is
- When the x axis is pointed down, the sensor is
- When the y axis is pointed up, the sensor is
- When the y axis is pointed down, the sensor is
- */
-
 enum SensorFacing {
     case faceUp, faceDown
 }
 
 enum SensorOrientation {
     case portraitUpright, portraitUpsideDown, landscapeLeft, landscapeRight
+}
+
+enum SensorStatus {
+    case ready, error, disconnected
 }
 
 class MetaWearSensor {
@@ -34,6 +30,7 @@ class MetaWearSensor {
     var accelSignal: OpaquePointer!
     var batterySignal: OpaquePointer!
     var stepSignal: OpaquePointer!
+    var orientationSignal: OpaquePointer!
     var facing: SensorFacing?
     var orientation: SensorOrientation?
     var delegate: MetaWearSensorDelegate?
@@ -55,7 +52,7 @@ class MetaWearSensor {
                 self.setUpAccelerometer()
                 self.setUpStepDetection()
                 self.checkBatteryLife()
-                self.checkSensorOrientation()
+                self.setUpOrientation()
                 
                 completion(true)
                 
@@ -117,7 +114,9 @@ class MetaWearSensor {
             let _self: MetaWearSensor = bridge(ptr: context!)
             let data = dataPtr!.pointee.valueAs() as MblMwCartesianFloat
             
-            //TODO: ready to feed into algorithm
+            if let del = _self.delegate {
+                del.pushReading(x: Double(data.x), y: Double(data.y), z: Double(data.z))
+            }
         }
         
         mbl_mw_acc_enable_acceleration_sampling(board)
@@ -142,6 +141,7 @@ class MetaWearSensor {
             let data = dataPtr!.pointee.valueAs() as MblMwCartesianFloat
             
             //TODO: ready to feed into algorithm
+            
         }
         
         mbl_mw_gyro_bmi160_enable_rotation_sampling(board)
@@ -163,7 +163,6 @@ class MetaWearSensor {
         }
     }
 
-    
     /**
      Step 3 in the set up process
      Uses a C++ pointer to configure and subscribe to the step detection signal (specific to the BMI160 accelerometers) on the Metawear board
@@ -239,12 +238,31 @@ class MetaWearSensor {
                 mbl_mw_gyro_bmi160_start(connectedBoard)
             }
             
-            if stepSignal != nil {
+            if stepSignal != nil && orientationSignal != nil {
                 mbl_mw_acc_bosch_start(connectedBoard)
             }
         }
     }
     
+    /**
+     Stops streaming data (accelerometer, gyroscope, and steps)
+     */
+    func stop() {
+        if let connectedBoard = board {
+            if accelSignal != nil {
+                mbl_mw_acc_stop(connectedBoard)
+            }
+            
+            if gyroSignal != nil {
+                mbl_mw_gyro_bmi160_stop(connectedBoard)
+            }
+            
+            if stepSignal != nil && orientationSignal != nil {
+                mbl_mw_acc_bosch_stop(connectedBoard)
+            }
+        }
+    }
+   
     /**
      After the configuration (above //3), we can access the battery life of the sensor
     **/
@@ -253,14 +271,14 @@ class MetaWearSensor {
     }
     
     /**
-     Documentation for this can be found here:  https://mbientlab.com/cppdocs/latest/accelerometer.html#orientation-detection
+     Documentation for orientation detection can be found here:  https://mbientlab.com/cppdocs/latest/accelerometer.html#orientation-detection
      */
-    func checkSensorOrientation() {
+    func setUpOrientation() {
         
         if let connectedBoard = board {
             
-            let orientSignal = mbl_mw_acc_bosch_get_orientation_detection_data_signal(connectedBoard)
-            mbl_mw_datasignal_subscribe(orientSignal, bridge(obj: self)) { (context, dataPtr) in
+            orientationSignal = mbl_mw_acc_bosch_get_orientation_detection_data_signal(connectedBoard)
+            mbl_mw_datasignal_subscribe(orientationSignal, bridge(obj: self)) { (context, dataPtr) in
                 let _self: MetaWearSensor = bridge(ptr: context!)
                 let data = dataPtr!.pointee.valueAs() as MblMwSensorOrientation
                 
@@ -302,12 +320,22 @@ class MetaWearSensor {
                 }
                 
                 if let del = _self.delegate {
-                    del.orientationDeteced()
+                    del.orientationDetected()
                 }
             }
             
             mbl_mw_acc_bosch_enable_orientation_detection(connectedBoard)
-            mbl_mw_acc_bosch_start(connectedBoard)
+            
+        }
+    }
+    
+    func checkStatus() -> SensorStatus {
+        if sensor.isConnectedAndSetup && accelSignal != nil {
+            return .ready
+        } else if sensor.isConnectedAndSetup == false {
+            return .disconnected
+        } else {
+            return .error
         }
     }
     
@@ -317,5 +345,6 @@ class MetaWearSensor {
 protocol MetaWearSensorDelegate {
     func notifyDisconnect()
     func step()
-    func orientationDeteced()
+    func orientationDetected()
+    func pushReading(x: Double, y: Double, z: Double)
 }
