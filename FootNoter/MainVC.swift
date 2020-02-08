@@ -17,6 +17,7 @@ class MainVC: UIViewController, MetaWearManagerDelegate {
     @IBOutlet weak var lblMacAddress: UILabel!
     @IBOutlet weak var lblBattery: UILabel!
     @IBOutlet weak var lblStepCount: UILabel!
+    @IBOutlet weak var lblOrientation: UILabel!
     
     //MARK: - UI Overrides
     
@@ -51,6 +52,16 @@ class MainVC: UIViewController, MetaWearManagerDelegate {
             self.lblStepCount.text = "\(count)"
         }
     }
+    
+    func updateOrientation(facing: SensorFacing, orientation: SensorOrientation) {
+        //var face: String
+        //var orient: String
+        DispatchQueue.main.async {
+            self.lblOrientation.text = "\(facing) \(orientation)"
+        }
+        
+      }
+      
     
     //MARK: - Functions called directly by UI components
     /**

@@ -18,7 +18,10 @@ enum ScanningStatus {
     case scanning, standby
 }
 
+
+
 class MetaWearManager: MetaWearSensorDelegate {
+
     
     var mwSensor: MetaWearSensor?
     var delegate: MetaWearManagerDelegate?
@@ -115,9 +118,23 @@ class MetaWearManager: MetaWearSensorDelegate {
             del.updateSteps(count: stepCount)
         }
     }
+    
+    func orientationDeteced() {
+        if let sensor = mwSensor {
+            if let orient = sensor.orientation {
+                if let facing = sensor.facing {
+                    if let del = delegate {
+                        del.updateOrientation(facing: facing, orientation: orient)
+                    }
+                }
+            }
+        }
+    }
+    
 }
 
 protocol MetaWearManagerDelegate {
     func update(mac: String, battery: String, connection: ConnectionStatus)
     func updateSteps(count: Int)
+    func updateOrientation(facing: SensorFacing, orientation: SensorOrientation)
 }

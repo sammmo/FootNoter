@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		268D135923B02B69009C8985 /* MetaWear.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 268D135823B02B69009C8985 /* MetaWear.framework */; };
-		268D135B23B02B72009C8985 /* BoltsSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 268D135A23B02B72009C8985 /* BoltsSwift.framework */; };
 		268D135D23B02B76009C8985 /* iOSDFULibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 268D135C23B02B76009C8985 /* iOSDFULibrary.framework */; };
 		268D135F23B03838009C8985 /* MetaWearManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 268D135E23B03838009C8985 /* MetaWearManager.swift */; };
 		26E21F62238D6C7D0098D842 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E21F61238D6C7D0098D842 /* AppDelegate.swift */; };
@@ -21,6 +20,7 @@
 		26E21F9323B010400098D842 /* SettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E21F9223B010400098D842 /* SettingsVC.swift */; };
 		26E21F9723B023860098D842 /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E21F9623B023860098D842 /* MainVC.swift */; };
 		26E21F9923B027240098D842 /* MetaWearSensor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E21F9823B027240098D842 /* MetaWearSensor.swift */; };
+		3109CEBC23EF3674000F6850 /* BoltsSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 268D135A23B02B72009C8985 /* BoltsSwift.framework */; };
 		31AA084523D102B800F60942 /* AppDelegate+UserVars.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31AA084423D102B800F60942 /* AppDelegate+UserVars.swift */; };
 		552CEA67F6111691FB226C51 /* Pods_FootNoter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F625F5837C35E3C6D1C3E542 /* Pods_FootNoter.framework */; };
 		6CD1D071EEBC11470400688F /* Pods_FootNoterTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6F03756446636A3A245B215 /* Pods_FootNoterTests.framework */; };
@@ -83,7 +83,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				268D135D23B02B76009C8985 /* iOSDFULibrary.framework in Frameworks */,
-				268D135B23B02B72009C8985 /* BoltsSwift.framework in Frameworks */,
+				3109CEBC23EF3674000F6850 /* BoltsSwift.framework in Frameworks */,
 				268D135923B02B69009C8985 /* MetaWear.framework in Frameworks */,
 				552CEA67F6111691FB226C51 /* Pods_FootNoter.framework in Frameworks */,
 			);
@@ -260,7 +260,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1010;
-				LastUpgradeCheck = 1010;
+				LastUpgradeCheck = 1130;
 				ORGANIZATIONNAME = Sammmo;
 				TargetAttributes = {
 					26E21F5D238D6C7D0098D842 = {
@@ -642,6 +642,7 @@
 			baseConfigurationReference = 4EA9EAA03712BFEE78FF0959 /* Pods-FootNoter.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 4Y4U5QDL2A;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -671,6 +672,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.sammmo.FootNoter;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -681,6 +683,7 @@
 			baseConfigurationReference = 99775C19F75D279CEACCFEA2 /* Pods-FootNoter.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 4Y4U5QDL2A;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -709,6 +712,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.sammmo.FootNoter;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 1;
 			};

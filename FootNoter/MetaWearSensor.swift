@@ -9,6 +9,22 @@ import Foundation
 import MetaWear
 import MetaWearCpp
 
+/**
+ MetaWear library provides code to detect if the sensor is vertical or horizontal.
+ When the x axis is pointed up, the sensor is
+ When the x axis is pointed down, the sensor is
+ When the y axis is pointed up, the sensor is
+ When the y axis is pointed down, the sensor is
+ */
+
+enum SensorFacing {
+    case faceUp, faceDown
+}
+
+enum SensorOrientation {
+    case portraitUpright, portraitUpsideDown, landscapeLeft, landscapeRight
+}
+
 class MetaWearSensor {
     var sensor: MetaWear!
     var board: OpaquePointer!
@@ -18,6 +34,8 @@ class MetaWearSensor {
     var accelSignal: OpaquePointer!
     var batterySignal: OpaquePointer!
     var stepSignal: OpaquePointer!
+    var facing: SensorFacing?
+    var orientation: SensorOrientation?
     var delegate: MetaWearSensorDelegate?
     
     /**
@@ -37,6 +55,7 @@ class MetaWearSensor {
                 self.setUpAccelerometer()
                 self.setUpStepDetection()
                 self.checkBatteryLife()
+                self.checkSensorOrientation()
                 
                 completion(true)
                 
@@ -233,10 +252,70 @@ class MetaWearSensor {
         //mbl_mw_datasignal_read(batterySignal)
     }
     
+    /**
+     Documentation for this can be found here:  https://mbientlab.com/cppdocs/latest/accelerometer.html#orientation-detection
+     */
+    func checkSensorOrientation() {
+        
+        if let connectedBoard = board {
+            
+            let orientSignal = mbl_mw_acc_bosch_get_orientation_detection_data_signal(connectedBoard)
+            mbl_mw_datasignal_subscribe(orientSignal, bridge(obj: self)) { (context, dataPtr) in
+                let _self: MetaWearSensor = bridge(ptr: context!)
+                let data = dataPtr!.pointee.valueAs() as MblMwSensorOrientation
+                
+                switch data {
+                case MBL_MW_SENSOR_ORIENTATION_FACE_UP_PORTRAIT_UPRIGHT:
+                    _self.facing = .faceUp
+                    _self.orientation = .portraitUpright
+                    break
+                case MBL_MW_SENSOR_ORIENTATION_FACE_UP_PORTRAIT_UPSIDE_DOWN:
+                    _self.facing = .faceUp
+                    _self.orientation = .portraitUpsideDown
+                    break
+                case MBL_MW_SENSOR_ORIENTATION_FACE_UP_LANDSCAPE_LEFT:
+                    _self.facing = .faceUp
+                    _self.orientation = .landscapeLeft
+                    break
+                case MBL_MW_SENSOR_ORIENTATION_FACE_UP_LANDSCAPE_RIGHT:
+                    _self.facing = .faceUp
+                    _self.orientation = .landscapeRight
+                    break
+                case MBL_MW_SENSOR_ORIENTATION_FACE_DOWN_PORTRAIT_UPRIGHT:
+                    _self.facing = .faceDown
+                    _self.orientation = .portraitUpright
+                    break
+                case MBL_MW_SENSOR_ORIENTATION_FACE_DOWN_PORTRAIT_UPSIDE_DOWN:
+                    _self.facing = .faceDown
+                    _self.orientation = .portraitUpsideDown
+                    break
+                case MBL_MW_SENSOR_ORIENTATION_FACE_DOWN_LANDSCAPE_LEFT:
+                    _self.facing = .faceDown
+                    _self.orientation = .landscapeLeft
+                    break
+                case MBL_MW_SENSOR_ORIENTATION_FACE_DOWN_LANDSCAPE_RIGHT:
+                    _self.facing = .faceDown
+                    _self.orientation = .landscapeRight
+                    break
+                default:
+                    break
+                }
+                
+                if let del = _self.delegate {
+                    del.orientationDeteced()
+                }
+            }
+            
+            mbl_mw_acc_bosch_enable_orientation_detection(connectedBoard)
+            mbl_mw_acc_bosch_start(connectedBoard)
+        }
+    }
+    
     //TODO: disconnection function
 }
 
 protocol MetaWearSensorDelegate {
     func notifyDisconnect()
     func step()
+    func orientationDeteced()
 }
