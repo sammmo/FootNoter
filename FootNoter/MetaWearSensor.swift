@@ -31,6 +31,8 @@ class MetaWearSensor {
     var batterySignal: OpaquePointer!
     var stepSignal: OpaquePointer!
     var orientationSignal: OpaquePointer!
+    var quatSignal: OpaquePointer!
+    var eulerSignal: OpaquePointer!
     var facing: SensorFacing?
     var orientation: SensorOrientation?
     var delegate: MetaWearSensorDelegate?
@@ -48,11 +50,12 @@ class MetaWearSensor {
                 self.board = self.sensor.board
                 self.mac = self.sensor.mac
                 
-                self.setUpGyroscope()
-                self.setUpAccelerometer()
+                //self.setUpGyroscope()
+               // self.setUpAccelerometer()
                 self.setUpStepDetection()
-                self.checkBatteryLife()
+               // self.checkBatteryLife()
                 self.setUpOrientation()
+                self.setUpSensorFusion()
                 
                 completion(true)
                 
@@ -92,12 +95,6 @@ class MetaWearSensor {
         }
     }
     
-    func step() {
-        if let del = delegate {
-            del.step()
-        }
-    }
-    
     /**
      Step 1 in the setup process
      Uses a C++ pointer to configure and subscribe to the accelerometer chip on the Metawear board
@@ -115,7 +112,7 @@ class MetaWearSensor {
             let data = dataPtr!.pointee.valueAs() as MblMwCartesianFloat
             
             if let del = _self.delegate {
-                del.pushReading(x: Double(data.x), y: Double(data.y), z: Double(data.z))
+                //del.pushReading(x: Double(data.x), y: Double(data.y), z: Double(data.z))
             }
         }
         
@@ -130,21 +127,23 @@ class MetaWearSensor {
     **/
     func setUpGyroscope() {
         
-        mbl_mw_gyro_bmi160_set_range(board, MBL_MW_GYRO_BMI160_RANGE_125dps)
-        mbl_mw_gyro_bmi160_set_odr(board, MBL_MW_GYRO_BMI160_ODR_25Hz)
-        mbl_mw_gyro_bmi160_write_config(board)
-        
-        gyroSignal = mbl_mw_gyro_bmi160_get_rotation_data_signal(board)
-        //2
-        mbl_mw_datasignal_subscribe(gyroSignal, bridge(obj: self)) { (context, dataPtr) in
-            let _self: MetaWearSensor = bridge(ptr: context!)
-            let data = dataPtr!.pointee.valueAs() as MblMwCartesianFloat
+        if let connectedBoard = board {
+            mbl_mw_gyro_bmi160_set_range(connectedBoard, MBL_MW_GYRO_BMI160_RANGE_125dps)
+            mbl_mw_gyro_bmi160_set_odr(connectedBoard, MBL_MW_GYRO_BMI160_ODR_25Hz)
+            mbl_mw_gyro_bmi160_write_config(connectedBoard)
             
-            //TODO: ready to feed into algorithm
+            gyroSignal = mbl_mw_gyro_bmi160_get_rotation_data_signal(connectedBoard)
+            //2
+            mbl_mw_datasignal_subscribe(gyroSignal, bridge(obj: self)) { (context, dataPtr) in
+                let _self: MetaWearSensor = bridge(ptr: context!)
+                let data = dataPtr!.pointee.valueAs() as MblMwCartesianFloat
+                
+                //TODO: ready to feed into algorithm
+                
+            }
             
+            mbl_mw_gyro_bmi160_enable_rotation_sampling(connectedBoard)
         }
-        
-        mbl_mw_gyro_bmi160_enable_rotation_sampling(board)
     }
     
     /**
@@ -179,7 +178,11 @@ class MetaWearSensor {
                 //3
                 mbl_mw_datasignal_subscribe(stepSignal, bridge(obj: self)) { (context, dataPtr) in
                     let _self: MetaWearSensor = bridge(ptr: context!)
-                    _self.step()
+                    let time = dataPtr!.pointee.timestamp as Date
+                    
+                    if let del = _self.delegate {
+                        del.step(time)
+                    }
                 }
                 
                 mbl_mw_acc_bmi160_enable_step_detector(connectedBoard)
@@ -225,17 +228,46 @@ class MetaWearSensor {
         return false
     }
     
+    func setUpSensorFusion() {
+        if let connectedBoard = board {
+            mbl_mw_sensor_fusion_set_mode(connectedBoard, MBL_MW_SENSOR_FUSION_MODE_IMU_PLUS)
+            mbl_mw_sensor_fusion_write_config(connectedBoard)
+            
+            eulerSignal = mbl_mw_sensor_fusion_get_data_signal(connectedBoard, MBL_MW_SENSOR_FUSION_DATA_EULER_ANGLE)
+            quatSignal = mbl_mw_sensor_fusion_get_data_signal(connectedBoard, MBL_MW_SENSOR_FUSION_DATA_QUATERNION)
+            
+            mbl_mw_datasignal_subscribe(quatSignal, bridge(obj: self)) { (context, dataPtr) in
+                let _self: MetaWearSensor = bridge(ptr: context!)
+                let timestamp = dataPtr!.pointee.timestamp
+                //let data = dataPtr!.pointee.valueAs() as MblMwEulerAngles
+                let data = dataPtr!.pointee.valueAs() as MblMwQuaternion
+                //print(data)
+                if let del = _self.delegate {
+                    //del.sensorFusion(angles: data, time: timestamp)
+                    del.sensorFusionQuat(angles: data, time: timestamp)
+                } else {
+                    print("no delegate for sensor fusion")
+                }
+            }
+            
+            //mbl_mw_sensor_fusion_enable_data(connectedBoard, MBL_MW_SENSOR_FUSION_DATA_EULER_ANGLE)
+            mbl_mw_sensor_fusion_enable_data(connectedBoard, MBL_MW_SENSOR_FUSION_DATA_QUATERNION)
+            mbl_mw_sensor_fusion_start(connectedBoard)
+            print("sensor fusion set up")
+        }
+    }
+    
     /**
      After the configuration (above) completes, this can be used to access the ongoing accelerometer (//1), gyroscope (//2), and step detection (//3) subscriptions as set up above
     **/
     func start() {
         if let connectedBoard = board {
             if accelSignal != nil {
-                mbl_mw_acc_start(connectedBoard)
+               // mbl_mw_acc_start(connectedBoard)
             }
             
             if gyroSignal != nil {
-                mbl_mw_gyro_bmi160_start(connectedBoard)
+              //  mbl_mw_gyro_bmi160_start(connectedBoard)
             }
             
             if stepSignal != nil && orientationSignal != nil {
@@ -330,7 +362,7 @@ class MetaWearSensor {
     }
     
     func checkStatus() -> SensorStatus {
-        if sensor.isConnectedAndSetup && accelSignal != nil {
+        if sensor.isConnectedAndSetup && quatSignal != nil && stepSignal != nil {
             return .ready
         } else if sensor.isConnectedAndSetup == false {
             return .disconnected
@@ -344,7 +376,9 @@ class MetaWearSensor {
 
 protocol MetaWearSensorDelegate {
     func notifyDisconnect()
-    func step()
+    func step(_ time: Date)
     func orientationDetected()
-    func pushReading(x: Double, y: Double, z: Double)
+    //func pushReading(x: Double, y: Double, z: Double)
+    //func sensorFusionEuler(angles: MblMwEulerAngles, time: Date)
+    func sensorFusionQuat(angles: MblMwQuaternion, time: Date)
 }

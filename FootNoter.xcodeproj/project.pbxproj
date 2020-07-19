@@ -12,7 +12,6 @@
 		268D135F23B03838009C8985 /* MetaWearManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 268D135E23B03838009C8985 /* MetaWearManager.swift */; };
 		26E21F62238D6C7D0098D842 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E21F61238D6C7D0098D842 /* AppDelegate.swift */; };
 		26E21F67238D6C7D0098D842 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 26E21F65238D6C7D0098D842 /* Main.storyboard */; };
-		26E21F6A238D6C7D0098D842 /* FootNoter.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 26E21F68238D6C7D0098D842 /* FootNoter.xcdatamodeld */; };
 		26E21F6C238D6C810098D842 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 26E21F6B238D6C810098D842 /* Assets.xcassets */; };
 		26E21F6F238D6C810098D842 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 26E21F6D238D6C810098D842 /* LaunchScreen.storyboard */; };
 		26E21F7A238D6C810098D842 /* FootNoterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E21F79238D6C810098D842 /* FootNoterTests.swift */; };
@@ -24,6 +23,11 @@
 		3109CEC023EF3B9F000F6850 /* TiltCalculation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3109CEBF23EF3B9F000F6850 /* TiltCalculation.swift */; };
 		3109CEC223EF3F91000F6850 /* CalibrationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3109CEC123EF3F91000F6850 /* CalibrationManager.swift */; };
 		31AA084523D102B800F60942 /* AppDelegate+UserVars.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31AA084423D102B800F60942 /* AppDelegate+UserVars.swift */; };
+		31B67B7E23EF8CE80084ED66 /* FootNoter.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 31B67B7C23EF8CE80084ED66 /* FootNoter.xcdatamodeld */; };
+		31B67B8323EF8D3B0084ED66 /* Step+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31B67B7F23EF8D3B0084ED66 /* Step+CoreDataClass.swift */; };
+		31B67B8423EF8D3B0084ED66 /* Step+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31B67B8023EF8D3B0084ED66 /* Step+CoreDataProperties.swift */; };
+		31B67B8523EF8D3B0084ED66 /* EulerAngle+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31B67B8123EF8D3B0084ED66 /* EulerAngle+CoreDataClass.swift */; };
+		31B67B8623EF8D3B0084ED66 /* EulerAngle+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31B67B8223EF8D3B0084ED66 /* EulerAngle+CoreDataProperties.swift */; };
 		552CEA67F6111691FB226C51 /* Pods_FootNoter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F625F5837C35E3C6D1C3E542 /* Pods_FootNoter.framework */; };
 		6CD1D071EEBC11470400688F /* Pods_FootNoterTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6F03756446636A3A245B215 /* Pods_FootNoterTests.framework */; };
 		E9856D7A2E1F3C19FFCB0925 /* Pods_FootNoter_FootNoterUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85ED6B13E9ABB1906964A6CE /* Pods_FootNoter_FootNoterUITests.framework */; };
@@ -55,7 +59,6 @@
 		26E21F5E238D6C7D0098D842 /* FootNoter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FootNoter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		26E21F61238D6C7D0098D842 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		26E21F66238D6C7D0098D842 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		26E21F69238D6C7D0098D842 /* FootNoter.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FootNoter.xcdatamodel; sourceTree = "<group>"; };
 		26E21F6B238D6C810098D842 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		26E21F6E238D6C810098D842 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		26E21F70238D6C810098D842 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -71,6 +74,11 @@
 		3109CEBF23EF3B9F000F6850 /* TiltCalculation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TiltCalculation.swift; sourceTree = "<group>"; };
 		3109CEC123EF3F91000F6850 /* CalibrationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalibrationManager.swift; sourceTree = "<group>"; };
 		31AA084423D102B800F60942 /* AppDelegate+UserVars.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppDelegate+UserVars.swift"; sourceTree = "<group>"; };
+		31B67B7D23EF8CE80084ED66 /* FootNoter.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FootNoter.xcdatamodel; sourceTree = "<group>"; };
+		31B67B7F23EF8D3B0084ED66 /* Step+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Step+CoreDataClass.swift"; sourceTree = "<group>"; };
+		31B67B8023EF8D3B0084ED66 /* Step+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Step+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		31B67B8123EF8D3B0084ED66 /* EulerAngle+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EulerAngle+CoreDataClass.swift"; sourceTree = "<group>"; };
+		31B67B8223EF8D3B0084ED66 /* EulerAngle+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EulerAngle+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		3CCD32540D9803C21CBCAB2B /* Pods-FootNoterTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FootNoterTests.release.xcconfig"; path = "Target Support Files/Pods-FootNoterTests/Pods-FootNoterTests.release.xcconfig"; sourceTree = "<group>"; };
 		4EA9EAA03712BFEE78FF0959 /* Pods-FootNoter.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FootNoter.debug.xcconfig"; path = "Target Support Files/Pods-FootNoter/Pods-FootNoter.debug.xcconfig"; sourceTree = "<group>"; };
 		85ED6B13E9ABB1906964A6CE /* Pods_FootNoter_FootNoterUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FootNoter_FootNoterUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -150,6 +158,10 @@
 		26E21F60238D6C7D0098D842 /* FootNoter */ = {
 			isa = PBXGroup;
 			children = (
+				31B67B7F23EF8D3B0084ED66 /* Step+CoreDataClass.swift */,
+				31B67B8023EF8D3B0084ED66 /* Step+CoreDataProperties.swift */,
+				31B67B8123EF8D3B0084ED66 /* EulerAngle+CoreDataClass.swift */,
+				31B67B8223EF8D3B0084ED66 /* EulerAngle+CoreDataProperties.swift */,
 				26E21F61238D6C7D0098D842 /* AppDelegate.swift */,
 				31AA084423D102B800F60942 /* AppDelegate+UserVars.swift */,
 				26E21F9223B010400098D842 /* SettingsVC.swift */,
@@ -162,7 +174,7 @@
 				26E21F6B238D6C810098D842 /* Assets.xcassets */,
 				26E21F6D238D6C810098D842 /* LaunchScreen.storyboard */,
 				26E21F70238D6C810098D842 /* Info.plist */,
-				26E21F68238D6C7D0098D842 /* FootNoter.xcdatamodeld */,
+				31B67B7C23EF8CE80084ED66 /* FootNoter.xcdatamodeld */,
 			);
 			path = FootNoter;
 			sourceTree = "<group>";
@@ -442,9 +454,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				31B67B8423EF8D3B0084ED66 /* Step+CoreDataProperties.swift in Sources */,
+				31B67B8523EF8D3B0084ED66 /* EulerAngle+CoreDataClass.swift in Sources */,
 				31AA084523D102B800F60942 /* AppDelegate+UserVars.swift in Sources */,
+				31B67B8323EF8D3B0084ED66 /* Step+CoreDataClass.swift in Sources */,
+				31B67B8623EF8D3B0084ED66 /* EulerAngle+CoreDataProperties.swift in Sources */,
 				3109CEC223EF3F91000F6850 /* CalibrationManager.swift in Sources */,
-				26E21F6A238D6C7D0098D842 /* FootNoter.xcdatamodeld in Sources */,
+				31B67B7E23EF8CE80084ED66 /* FootNoter.xcdatamodeld in Sources */,
 				268D135F23B03838009C8985 /* MetaWearManager.swift in Sources */,
 				26E21F9723B023860098D842 /* MainVC.swift in Sources */,
 				26E21F9323B010400098D842 /* SettingsVC.swift in Sources */,
@@ -854,12 +870,12 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		26E21F68238D6C7D0098D842 /* FootNoter.xcdatamodeld */ = {
+		31B67B7C23EF8CE80084ED66 /* FootNoter.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				26E21F69238D6C7D0098D842 /* FootNoter.xcdatamodel */,
+				31B67B7D23EF8CE80084ED66 /* FootNoter.xcdatamodel */,
 			);
-			currentVersion = 26E21F69238D6C7D0098D842 /* FootNoter.xcdatamodel */;
+			currentVersion = 31B67B7D23EF8CE80084ED66 /* FootNoter.xcdatamodel */;
 			path = FootNoter.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

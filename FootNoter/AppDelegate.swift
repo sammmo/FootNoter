@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import MetaWearCpp
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -77,6 +78,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // MARK: - Core Data Saving support
 
     func saveContext () {
+        print("Saving")
         let context = persistentContainer.viewContext
         if context.hasChanges {
             do {
@@ -88,6 +90,32 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
             }
         }
+    }
+    
+    //MARK: - Core Data Saving functions
+    
+    func saveEulerAngles(_ readings: [EulerAngleObject]) {
+
+        let context = persistentContainer.viewContext
+        
+        for reading in readings {
+            let angle = EulerAngle(context: context)
+            angle.yaw = reading.angles.yaw
+            angle.pitch = reading.angles.pitch
+            angle.roll = reading.angles.roll
+            angle.heading = reading.angles.heading //TODO: fix header to heading
+            angle.timestamp = reading.timestamp
+        }
+        
+        saveContext()
+    }
+    
+    func saveStep(_ reading: Date) {
+        let context = persistentContainer.viewContext
+        let step = Step(context: context)
+        
+        step.timestamp = reading
+        saveContext()
     }
 
 }

@@ -9,8 +9,13 @@ import Foundation
 import UIKit
 
 class MainVC: UIViewController, MetaWearManagerDelegate {
-
+    func updateAngle(angle: Double) {
+        updateAngleLabel(angle: angle)
+    }
+    
+    
     var metaWearManager: MetaWearManager!
+    var calibration: Calibration? //TODO: this is only temporary until persisted into CoreDB
     
     //MARK: - UI Outlet Variables
     @IBOutlet weak var lblSensorStatus: UILabel!
@@ -18,13 +23,23 @@ class MainVC: UIViewController, MetaWearManagerDelegate {
     @IBOutlet weak var lblBattery: UILabel!
     @IBOutlet weak var lblStepCount: UILabel!
     @IBOutlet weak var lblOrientation: UILabel!
+    @IBOutlet weak var lblAngle: UILabel!
     
     //MARK: - UI Overrides
     
     override func viewDidLoad() {
-        
-        metaWearManager = MetaWearManager()
-        metaWearManager.delegate = self
+      if #available(iOS 13.0, *) {
+          // Always adopt a light interface style.
+          overrideUserInterfaceStyle = .light
+      }
+    }
+    
+    func startSensing() {
+        if metaWearManager.checkSensor() == .ready {
+            metaWearManager.startSensor()
+        } else {
+            print("can't start sensing bc \(metaWearManager.checkSensor())")
+        }
     }
     
     //MARK: - Delegate protocol implementation
@@ -53,14 +68,27 @@ class MainVC: UIViewController, MetaWearManagerDelegate {
         }
     }
     
+    func updateAngleLabel(angle: Double) {
+        DispatchQueue.main.async {
+            self.lblAngle.text = String(format: "%.1f", angle)
+        }
+    }
+    
     func updateOrientation(facing: SensorFacing, orientation: SensorOrientation) {
         //var face: String
         //var orient: String
         DispatchQueue.main.async {
             self.lblOrientation.text = "\(facing) \(orientation)"
         }
-        
       }
+    
+    func saveStep(_ stepTime: Date) {
+         print("trying to save")
+        DispatchQueue.main.async {
+            let appDelegate = UIApplication.shared.delegate as! AppDelegate
+            appDelegate.saveStep(stepTime)
+        }
+    }
       
     
     //MARK: - Functions called directly by UI components
@@ -70,18 +98,22 @@ class MainVC: UIViewController, MetaWearManagerDelegate {
     @IBAction func scanPressed(_ sender: Any) {
         if let manager = metaWearManager {
             manager.locateNearbySensors()
+        } else {
+            metaWearManager = MetaWearManager()
+            metaWearManager.delegate = self
+            metaWearManager.locateNearbySensors()
         }
     }
     
+    @IBAction func startStepPressed(_ sender: Any) {
+        startSensing()
+    }
+    
     @IBAction func calibratePressed(_ sender: Any) {
-        //TODO: implement calibration
-        //Display instructions
-        //get 5 seconds of reading
-        //average out the x,y,z
-        //persist Calibration struct
         let manager = CalibrationManager(manager: metaWearManager)
         manager.run { (calibration) in
-            //save calibration to coredata
+            //TODO: save calibration to coredata
+            self.calibration = calibration
             print(calibration)
         }
     }

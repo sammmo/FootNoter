@@ -18,14 +18,35 @@ enum ScanningStatus {
     case scanning, standby
 }
 
+struct EulerAngleObject {
+    var timestamp: Date
+    var angles: MblMwEulerAngles
+    
+    init(time: Date, angles: MblMwEulerAngles) {
+        self.timestamp = time
+        self.angles = angles
+    }
+}
+
 class MetaWearManager: MetaWearSensorDelegate {
+
+    func sensorFusionQuat(angles: MblMwQuaternion, time: Date) {
+        let ots = OTScalc(x: Double(angles.x), y: Double(angles.y), z: Double(angles.z), orientation: nil)
+        angleArray.append(ots.angle1)
+        
+        if angleArray.count > 200 {
+            angleArray = Array(angleArray.dropFirst(100))
+            print("Angle Array now has: \(angleArray.count)")
+        }
+    }
     
     var mwSensor: MetaWearSensor?
     var delegate: MetaWearManagerDelegate?
-    var readingDelegate: ReadingDelegate?
     var stepCount: Int = 0
     private var connectionStatus: ConnectionStatus!
     private var scanningStatus: ScanningStatus!
+    
+    private var angleArray = [Double]() //The angles since the last step
     
     init() {
         
@@ -37,7 +58,7 @@ class MetaWearManager: MetaWearSensorDelegate {
     /**
      Starts the scanning protocol for sensors
      If it finds one that it can connect to, it stops scanning and notifies delegate
-    **/
+     **/
     func locateNearbySensors() {
         if scanningStatus != .scanning && connectionStatus != .connected {
             scanningStatus = .scanning
@@ -77,13 +98,14 @@ class MetaWearManager: MetaWearSensorDelegate {
                         self.connectionStatus = .connected
                         //TODO: how to notify battery change??
                         
-                    if let del = self.delegate {
-                        //Notify delegate (View Controller of what is on the screen) that we are connected
-                        del.update(mac: self.mwSensor?.mac ?? "No mac", battery: self.mwSensor?.batteryLife ?? "0%", connection: .connected)
+                        if let del = self.delegate {
+                            //Notify delegate (View Controller of what is on the screen) that we are connected
+                            del.update(mac: self.mwSensor?.mac ?? "No mac", battery: self.mwSensor?.batteryLife ?? "0%", connection: .connected)
                         }
                         
                         completion()
                     } else {//MetaWearSensor notifies us that there was an error (sensor was not successfully connected)
+                        print("no connection")
                         //TODO: alert user of error
                         if let del = self.delegate {
                             del.update(mac: "", battery: "", connection: .disconnected)
@@ -125,6 +147,16 @@ class MetaWearManager: MetaWearSensorDelegate {
         }
     }
     
+    func getAverageAngle() -> Double {
+        let tempArray = angleArray
+        var angle = 0.0
+        for a in angleArray {
+            angle += a
+        }
+        
+        return angle / Double(tempArray.count)
+    }
+    
     //MARK: - Delegate Protocol Functions
     
     func notifyDisconnect() {
@@ -136,10 +168,11 @@ class MetaWearManager: MetaWearSensorDelegate {
         }
     }
     
-    func step() {
+    func step(_ time: Date) {
         stepCount += 1
         if let del = delegate {
             del.updateSteps(count: stepCount)
+            del.updateAngle(angle: getAverageAngle())
         }
     }
     
@@ -154,25 +187,11 @@ class MetaWearManager: MetaWearSensorDelegate {
             }
         }
     }
-    
-    /**
-     Since the idea of this "Manager" is to abstract the sensor from the rest of the code, when the sensor takes an accelerometer reading, manager passes it along to whatever has declared itself the readings reciever (delegate)
-     */
-    
-    func pushReading(x: Double, y: Double, z: Double) {
-        if let del = readingDelegate {
-            del.getReading(x: x, y: y, z: z)
-        }
-    }
-    
 }
 
 protocol MetaWearManagerDelegate {
     func update(mac: String, battery: String, connection: ConnectionStatus)
     func updateSteps(count: Int)
     func updateOrientation(facing: SensorFacing, orientation: SensorOrientation)
-}
-
-protocol ReadingDelegate {
-    func getReading(x: Double, y: Double, z: Double)
+    func updateAngle(angle: Double)
 }

@@ -13,7 +13,15 @@ import Foundation
  It creates a Calibration which is an averaging of the x,y,z readings on a still foot
  */
 
-class CalibrationManager: ReadingDelegate {
+class CalibrationManager {
+    func saveAngles(_ angles: [EulerAngleObject]) {
+        //no
+    }
+    
+    func saveStep(_ stepTime: Date) {
+        //no
+    }
+    
     
     var mwSensorManager: MetaWearManager!
     private var xList = [Double]()
@@ -22,7 +30,7 @@ class CalibrationManager: ReadingDelegate {
     
     init(manager: MetaWearManager) {
         self.mwSensorManager = manager
-        manager.readingDelegate = self
+        //manager.readingDelegate = self
     }
     
     func run(_ completion: @escaping (Calibration) -> ()) {
